@@ -24,13 +24,43 @@ const upload = multer({ storage })
 const isAdmin = require('../middlewares/isAdmin')
 
 // ==== Header Routes ====
-router.post('/headers/info', isAdmin, upload.single('image'), createHeaderInfo)
+/**
+ * @swagger
+ * /api/admin/headers/info:
+ *   post:
+ *     summary: Create header info
+ *     description: Foydalanuvchilar ro'yxatini qaytaradi
+ *     parameters:
+ *       - name: title
+ *         in: body
+ *         description: Header nomi
+ *         required: true
+ *         schema:
+ *           type: string
+ *           example: "New header title"
+ *       - name: description
+ *         in: body
+ *         description: Header uchun qo'shimcha izoh
+ *         required: false
+ *         schema:
+ *           type: string
+ *           example: "Description of the header"
+ *       - name: image
+ *         in: formData
+ *         description: Header uchun rasm
+ *         required: true
+ *         type: file
+ *     responses:
+ *       200:
+ *         description: Foydalanuvchilar ro'yxati muvaffaqiyatli qaytarildi
+ */
+router.post('/headers/info', isAdmin, upload.single('image'), createHeaderInfo);
 router.put('/headers/:id/info', isAdmin, upload.single('image'), updateHeaderInfo)
 router.delete('/headers/:id/info', isAdmin, deleteHeaderInfo)
 router.get('/headers/info', isAdmin, allHeaders)
 router.get('/headers/:id/info', isAdmin, oneHeader)
 
-// ==== Popular Courses ====
+// ==== Popular Courses ====  
 router.post('/popular-courses', isAdmin, upload.single('image'), createNewCourse)
 router.put('/popular-courses/:id', isAdmin, upload.single('image'), updateCourse)
 router.delete('/popular-courses/:id', isAdmin, deleteCourse)

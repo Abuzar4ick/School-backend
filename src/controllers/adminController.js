@@ -14,7 +14,7 @@ const {
 // POST
 exports.createHeaderInfo = asyncHandler(async (req, res, next) => {
   const { title, description } = req.body
-  const image = req.file.fileName
+  const image = req.file.filename
 
   const newHeader = await Header.create({ title, description, image })
   res.status(201).json({ success: true, message: 'New header created', data: newHeader })
@@ -24,7 +24,7 @@ exports.createHeaderInfo = asyncHandler(async (req, res, next) => {
 exports.updateHeaderInfo = asyncHandler(async (req, res, next) => {
   const { id } = req.params
   const { title, description } = req.body
-  const image = req.file?.fileName
+  const image = req.file?.filename
 
   const updatedData = { title, description }
   if (image) updatedData.image = image
@@ -48,7 +48,7 @@ exports.deleteHeaderInfo = asyncHandler(async (req, res, next) => {
 // POST
 exports.createNewCourse = asyncHandler(async (req, res, next) => {
   const { title, description } = req.body
-  const image = req.file.fileName
+  const image = req.file.filename
 
   const newCourse = await Course.create({ title, description, image })
   res.status(201).json({ success: true, message: 'New course created', data: newCourse })
@@ -58,7 +58,7 @@ exports.createNewCourse = asyncHandler(async (req, res, next) => {
 exports.updateCourse = asyncHandler(async (req, res, next) => {
   const { id } = req.params
   const { title, description } = req.body
-  const image = req.file?.fileName
+  const image = req.file?.filename
 
   const updatedData = { title, description }
   if (image) updatedData.image = image
@@ -82,7 +82,7 @@ exports.deleteCourse = asyncHandler(async (req, res, next) => {
 // POST
 exports.createNewPackage = asyncHandler(async (req, res, next) => {
   const { title, description } = req.body
-  const video = req.file.fileName
+  const video = req.file.filename
 
   const newPackage = await Package.create({ title, description, video })
   res.status(201).json({ success: true, message: 'New package created', data: newPackage })
@@ -92,7 +92,7 @@ exports.createNewPackage = asyncHandler(async (req, res, next) => {
 exports.updatePackage = asyncHandler(async (req, res, next) => {
   const { id } = req.params
   const { title, description } = req.body
-  const video = req.file?.fileName
+  const video = req.file?.filename
 
   const updatedData = { title, description }
   if (video) updatedData.video = video
@@ -116,7 +116,7 @@ exports.deletePackage = asyncHandler(async (req, res, next) => {
 // POST
 exports.createNewEvent = asyncHandler(async (req, res, next) => {
   const { title, description } = req.body
-  const image = req.file.fileName
+  const image = req.file.filename
 
   const newEvent = await Event.create({ title, description, image })
   res.status(201).json({ success: true, message: 'New event created', data: newEvent })
@@ -126,7 +126,7 @@ exports.createNewEvent = asyncHandler(async (req, res, next) => {
 exports.updateEvent = asyncHandler(async (req, res, next) => {
   const { id } = req.params
   const { title, description } = req.body
-  const image = req.file?.fileName
+  const image = req.file?.filename
 
   const updatedData = { title, description }
   if (image) updatedData.image = image
@@ -150,7 +150,7 @@ exports.deleteEvent = asyncHandler(async (req, res, next) => {
 // POST
 exports.createNewTeacher = asyncHandler(async (req, res, next) => {
   const { teacher_name, description, job, rating } = req.body
-  const image = req.file.fileName
+  const image = req.file.filename
 
   const newTeacher = await Teacher.create({ teacher_name, description, job, rating, image })
   res.status(201).json({ success: true, message: 'New teacher created', data: newTeacher })
@@ -160,7 +160,7 @@ exports.createNewTeacher = asyncHandler(async (req, res, next) => {
 exports.updateTeacher = asyncHandler(async (req, res, next) => {
   const { id } = req.params
   const { teacher_name, description, job, rating } = req.body
-  const image = req.file?.fileName
+  const image = req.file?.filename
 
   const updatedData = { teacher_name, description, job, rating }
   if (image) updatedData.image = image
